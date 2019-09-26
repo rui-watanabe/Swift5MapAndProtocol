@@ -50,7 +50,28 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UIGestureRecogn
         
     }
     
+    func convert(lat:CLLocationDegrees,log:CLLocationDegrees){
+        
+        let geocoder = CLGeocoder()
+        let location = CLLocation(latitude: lat, longitude: log)
+        
+        
+       //クロージャー
+        geocoder.reverseGeocodeLocation(location) { (placeMark, error) in
     
+    if let placeMark = placeMark{
+        if let pm = placeMark.first{
+            if pm.administrativeArea != nil || pm.locality != nil{
+                self.addessString = pm.name! + pm.administrativeArea! +  pm.locality!
+            }else{
+                self.addessString = pm.name!
+            }
+            self.addressLabel.text = self.addessString
+        }
+    }
+            
+        }
+    }
     
 
 }
