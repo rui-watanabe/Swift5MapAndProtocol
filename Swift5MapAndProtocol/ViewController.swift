@@ -82,6 +82,19 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UIGestureRecogn
         }
     }
     
-
+    
+    @IBAction func goToSearchVC(_ sender: Any) {
+        //画面遷移
+        
+        performSegue(withIdentifier: "next", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "next"{
+            let nextVC = segue.destination as! NextViewController
+        }
+    }
+    
+    
 }
 
