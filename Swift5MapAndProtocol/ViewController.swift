@@ -11,7 +11,8 @@ import MapKit
 import CoreLocation
 
 
-class ViewController: UIViewController,CLLocationManagerDelegate,UIGestureRecognizerDelegate{
+class ViewController: UIViewController,CLLocationManagerDelegate,UIGestureRecognizerDelegate,SearchLocationDelegate{
+    
     
     var addessString = ""
     
@@ -92,8 +93,43 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UIGestureRecogn
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "next"{
             let nextVC = segue.destination as! NextViewController
+            nextVC.delegate = self
         }
     }
+    
+    
+    //任されたデリゲートメソッド
+    func searchLocation(idoValue: String, keidoValue: String) {
+           
+        if idoValue.isEmpty != true && keidoValue.isEmpty != true{
+            
+            let idoString = idoValue
+            let keidoString = keidoValue
+            
+            //緯度と経度からコーディネート
+            let coordinate = CLLocationCoordinate2DMake(Double(idoString)!, Double(keidoString)!)
+            
+            //表示する範囲を指定する
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            
+            //領域を指定
+            let region = MKCoordinateRegion(center: coordinate, span: span)
+            
+            //領域をマップビューに設定
+            mapView.setRegion(region, animated: true)
+            
+            //緯度経度から住所へ変換
+            convert(lat: Double(idoString)!, log: Double(keidoString)!)
+            
+            //ラベルに表示
+            addressLabel.text = addessString
+            
+            
+        }else{
+            addressLabel.text = "表示できません"
+        }
+        
+       }
     
     
 }
