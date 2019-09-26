@@ -46,6 +46,15 @@ class ViewController: UIViewController,CLLocationManagerDelegate,UIGestureRecogn
             
         //緯度経度から住所に変換する
             
+            let tapPoint = sender.location(in: view)
+        //タップした位置（CGPoint）を指定して、MKMapView上の緯度経度を取得する
+            
+            let center = mapView.convert(tapPoint, toCoordinateFrom: mapView)
+            let lat = center.latitude
+            let log = center.longitude
+            convert(lat: lat, log: log)
+            
+            
         }
         
     }
