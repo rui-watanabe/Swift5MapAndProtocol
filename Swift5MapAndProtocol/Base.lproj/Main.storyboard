@@ -18,6 +18,10 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BER-Mp-emt">
                                 <rect key="frame" x="0.0" y="80" width="414" height="463"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="dX4-mS-dYt" appends="YES" id="pVt-rB-FeZ"/>
+                                </connections>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="住所" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmJ-d3-ecI">
                                 <rect key="frame" x="36" y="579" width="342" height="121"/>
@@ -38,12 +42,18 @@
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="hmJ-d3-ecI" id="sf7-G6-CKt"/>
+                        <outlet property="longPress" destination="dX4-mS-dYt" id="CDe-h0-HyG"/>
                         <outlet property="mapView" destination="BER-Mp-emt" id="lAD-Ra-DBe"/>
                         <outlet property="settingButton" destination="3zl-tc-A3M" id="bE9-DS-Qe7"/>
                         <segue destination="RBe-XF-gbe" kind="presentation" modalPresentationStyle="fullScreen" id="5zt-Ob-sbW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="dX4-mS-dYt">
+                    <connections>
+                        <action selector="longPressTap:" destination="BYZ-38-t0r" id="bnm-Tc-p6D"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-57.971014492753625" y="115.84821428571428"/>
         </scene>
