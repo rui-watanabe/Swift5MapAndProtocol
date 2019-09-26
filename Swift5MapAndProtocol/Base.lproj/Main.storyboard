@@ -37,6 +37,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="addressLabel" destination="hmJ-d3-ecI" id="sf7-G6-CKt"/>
+                        <outlet property="mapView" destination="BER-Mp-emt" id="lAD-Ra-DBe"/>
+                        <outlet property="settingButton" destination="3zl-tc-A3M" id="bE9-DS-Qe7"/>
                         <segue destination="RBe-XF-gbe" kind="presentation" modalPresentationStyle="fullScreen" id="5zt-Ob-sbW"/>
                     </connections>
                 </viewController>
